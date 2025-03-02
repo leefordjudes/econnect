@@ -1,0 +1,48 @@
+Tasks: 
+Company Selection
+    [required tally api url: http://localhost:9000]
+    1. retrieve company names from tally
+    2. list company names
+Date Selection, 
+    Default: Current Date
+Preference Screen
+    1. Select Bank Account,
+    2. No. of records per page,
+Settings Screen
+    1. Corporate Id,
+    2. Maker Id,
+    3. User Id,
+    4. Password,
+    5. OAuth Url,
+    6. Get Transaction Status Url,
+    7. Payment Api Url,
+    8. Public Key,
+    9. Private Key,
+ReadyToSend Screen
+    1. Get all payment vouchers which is not filled bank date,
+        for given date from tally, 
+    2. fill ReadyToSend screen details
+    3. on selecting transactions update status panel with calculated values
+    4. Send all selected transcations on press button "Send To Bank",
+        and store sent transactions in database. 
+        if noting selected, then do nothing.
+    5. Refresh button used to do step 1 once again
+SentToBank Screen
+    1. Retrieve all sent transactions, 
+        which has status <> Success, and status in (submitted, failed, suspect)
+        from database for given date
+    2. Get all payment vouchers which is not filled bank date,
+        for given date from tally,
+    3. if matched (id, vchno, amount, beneficary) records found 
+        then show details.
+    4. Fill status panel according to screen detail.
+    5. on pressing "Update Status" button 
+        => update bank date, bank ref no in tally voucher.
+        => update status as success, bank date, bank ref no in database.
+        then refresh page.
+    6. on pressing "Reset" button, 
+        => delete corresponding record in database for selected transaction of SentToBank screen.
+        => if noting selected, then do nothing. 
+
+
+
