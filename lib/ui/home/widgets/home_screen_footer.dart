@@ -61,7 +61,7 @@ class HomeScreenFooter extends StatelessWidget {
                     child: VerticalDivider(color: Colors.black45),
                   ),
                   IconButton(
-                    onPressed: () => () {},
+                    onPressed: () => showSettingsDialog(context),
                     iconSize: 28,
                     icon: Icon(Icons.construction),
                   ),
@@ -74,4 +74,25 @@ class HomeScreenFooter extends StatelessWidget {
       ],
     );
   }
+}
+
+showSettingsDialog(BuildContext context) {
+  return showDialog(
+    barrierDismissible: false,
+    context: context,
+    builder: (context) {
+      return AlertDialog(
+        title: Text('Settings'),
+        content: Text('This Dialog for Settings Preference'),
+        actions: [
+          TextButton(
+            onPressed: () {
+              Navigator.of(context).pop();
+            },
+            child: Text('Close'),
+          ),
+        ],
+      );
+    },
+  );
 }

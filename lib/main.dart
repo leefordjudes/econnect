@@ -1,3 +1,4 @@
+import 'package:econnect/ui/core/theme/theme.dart';
 import 'package:econnect/ui/home/provider/home_screen_provider.dart';
 import 'package:econnect/ui/home/widgets/home_screen.dart';
 import 'package:flutter/material.dart';
@@ -12,13 +13,19 @@ class MainApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider(
-      create: (context) => HomeScreenProvider(),
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (context) => HomeScreenProvider()),
+        ChangeNotifierProvider(create: (context) => AppTheme()),
+      ],
       child: Builder(
         builder: (context) {
-          return const MaterialApp(
+          return MaterialApp(
+            title: 'EConnect - Tamilnad Mercantile Bank Ltd',
+            theme: context.watch<AppTheme>().themeData(),
+            darkTheme: context.watch<AppTheme>().themeData(),
             debugShowCheckedModeBanner: false,
-            home: HomeScreen(),
+            home: const HomeScreen(),
           );
         },
       ),

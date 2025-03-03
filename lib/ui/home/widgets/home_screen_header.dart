@@ -8,18 +8,20 @@ class HomeScreenHeader extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final date = Provider.of<HomeScreenProvider>(context).date;
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        Column(
+          mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Row(
               children: [
                 IconButton(
+                  padding: EdgeInsets.zero,
                   onPressed: () => showDatePickerDialog(context),
                   icon: Icon(Icons.calendar_month),
-                  iconSize: 28,
+                  iconSize: 18,
                 ),
                 Text(
                   "Date : $date",
@@ -31,33 +33,45 @@ class HomeScreenHeader extends StatelessWidget {
                 ),
               ],
             ),
-            Text(
-              'ABC',
-              style: TextStyle(
-                fontSize: 14,
-                fontWeight: FontWeight.w500,
-                fontFamily: 'Montserrat',
-              ),
-            ),
-          ],
-        ),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
             Row(
-              children: const [
+              children: [
                 IconButton(
-                  onPressed: null,
-                  iconSize: 28,
+                  padding: EdgeInsets.zero,
+                  onPressed: () => showConfigurationDialog(context),
+                  iconSize: 18,
                   icon: Icon(Icons.settings),
                 ),
                 Text(
-                  'Bank:',
+                  'BankAccount:',
                   style: TextStyle(
                     fontSize: 14,
                     fontWeight: FontWeight.w500,
                     fontFamily: 'Montserrat',
                   ),
+                ),
+              ],
+            ),
+          ],
+        ),
+        Column(
+          crossAxisAlignment: CrossAxisAlignment.end,
+          children: [
+            Row(
+              spacing: 5,
+              children: [
+                Text(
+                  'ABC',
+                  style: TextStyle(
+                    fontSize: 14,
+                    fontWeight: FontWeight.w500,
+                    fontFamily: 'Montserrat',
+                  ),
+                ),
+                IconButton(
+                  padding: EdgeInsets.zero,
+                  iconSize: 18,
+                  onPressed: () => showCompanyDialog(context),
+                  icon: Icon(Icons.account_balance),
                 ),
               ],
             ),
@@ -104,4 +118,44 @@ Future<void> showDatePickerDialog(BuildContext context) async {
       listen: false,
     ).updateDate(selectedDate);
   }
+}
+
+showConfigurationDialog(BuildContext context) {
+  return showDialog(
+    context: context,
+    builder: (context) {
+      return AlertDialog(
+        title: Text('Configuration'),
+        content: Text('This Dialog for BankAccount Preference'),
+        actions: [
+          TextButton(
+            onPressed: () {
+              Navigator.pop(context);
+            },
+            child: Text('Close'),
+          ),
+        ],
+      );
+    },
+  );
+}
+
+showCompanyDialog(BuildContext context) {
+  return showDialog(
+    context: context,
+    builder: (context) {
+      return AlertDialog(
+        title: Text('Company List'),
+        content: Text('This Dialog for Company Preference'),
+        actions: [
+          TextButton(
+            onPressed: () {
+              Navigator.pop(context);
+            },
+            child: Text('Close'),
+          ),
+        ],
+      );
+    },
+  );
 }
