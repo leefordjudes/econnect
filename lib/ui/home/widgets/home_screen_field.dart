@@ -5,6 +5,19 @@ class HomeScreenField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(children: [Row(), Expanded(child: Container()), Row()]);
+    return Column(
+      children: [
+        Row(),
+        Expanded(child: Container()),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            Text('No of transactions : '),
+            Text('Selected Total : '),
+            Text('Total : '),
+          ],
+        ),
+      ],
+    );
   }
 }
