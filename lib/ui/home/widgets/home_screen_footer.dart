@@ -1,3 +1,4 @@
+import 'package:econnect/ui/home/Dialog/settings_dialog.dart';
 import 'package:flutter/material.dart';
 
 class HomeScreenFooter extends StatelessWidget {
@@ -74,25 +75,4 @@ class HomeScreenFooter extends StatelessWidget {
       ],
     );
   }
-}
-
-showSettingsDialog(BuildContext context) {
-  return showDialog(
-    barrierDismissible: false,
-    context: context,
-    builder: (context) {
-      return AlertDialog(
-        title: Text('Settings'),
-        content: Text('This Dialog for Settings Preference'),
-        actions: [
-          TextButton(
-            onPressed: () {
-              Navigator.of(context).pop();
-            },
-            child: Text('Close'),
-          ),
-        ],
-      );
-    },
-  );
 }

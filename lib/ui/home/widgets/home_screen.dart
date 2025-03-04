@@ -1,9 +1,9 @@
 // ignore_for_file: use_build_context_synchronously
 
 import 'package:econnect/ui/home/provider/home_screen_provider.dart';
-import 'package:econnect/ui/home/widgets/home_screen_field.dart';
 import 'package:econnect/ui/home/widgets/home_screen_footer.dart';
 import 'package:econnect/ui/home/widgets/home_screen_header.dart';
+import 'package:econnect/ui/transaction_page/widgets/transaction_page.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -31,7 +31,7 @@ class _HomeScreenState extends State<HomeScreen> {
         child: Column(
           children: [
             HomeScreenHeader(),
-            Expanded(child: HomeScreenField()),
+            Expanded(child: TransactionPage()),
             HomeScreenFooter(),
           ],
         ),

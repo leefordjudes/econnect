@@ -1,3 +1,6 @@
+import 'package:econnect/ui/home/Dialog/company_dialog.dart';
+import 'package:econnect/ui/home/Dialog/configuration_dialog.dart';
+import 'package:econnect/ui/home/Dialog/date_picker_dialog.dart';
 import 'package:econnect/ui/home/provider/home_screen_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -54,6 +57,7 @@ class HomeScreenHeader extends StatelessWidget {
           ],
         ),
         Column(
+          mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.end,
           children: [
             Row(
@@ -103,59 +107,4 @@ class HomeScreenHeader extends StatelessWidget {
       ],
     );
   }
-}
-
-Future<void> showDatePickerDialog(BuildContext context) async {
-  DateTime? selectedDate = await showDatePicker(
-    context: context,
-    initialDate: DateTime.now(),
-    firstDate: DateTime(2000),
-    lastDate: DateTime(2100),
-  );
-  if (selectedDate != null) {
-    Provider.of<HomeScreenProvider>(
-      context,
-      listen: false,
-    ).updateDate(selectedDate);
-  }
-}
-
-showConfigurationDialog(BuildContext context) {
-  return showDialog(
-    context: context,
-    builder: (context) {
-      return AlertDialog(
-        title: Text('Configuration'),
-        content: Text('This Dialog for BankAccount Preference'),
-        actions: [
-          TextButton(
-            onPressed: () {
-              Navigator.pop(context);
-            },
-            child: Text('Close'),
-          ),
-        ],
-      );
-    },
-  );
-}
-
-showCompanyDialog(BuildContext context) {
-  return showDialog(
-    context: context,
-    builder: (context) {
-      return AlertDialog(
-        title: Text('Company List'),
-        content: Text('This Dialog for Company Preference'),
-        actions: [
-          TextButton(
-            onPressed: () {
-              Navigator.pop(context);
-            },
-            child: Text('Close'),
-          ),
-        ],
-      );
-    },
-  );
 }
